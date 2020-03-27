@@ -7,6 +7,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TestInterceptor} from './shared/interceptors/test-interceptor';
 import {Test2Interceptor} from './shared/interceptors/test2-interceptor';
 import {initializeApp1} from './shared/initializer/test-initializer';
+import {TestInitilizerService} from './shared/initializer/test-initilizer.service';
+import {Lesson2Module} from './lesson2/lesson2.module';
 
 @NgModule({
   declarations: [
@@ -15,9 +17,11 @@ import {initializeApp1} from './shared/initializer/test-initializer';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    Lesson2Module
   ],
   providers: [
+    TestInitilizerService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TestInterceptor,
@@ -28,7 +32,7 @@ import {initializeApp1} from './shared/initializer/test-initializer';
       useClass: Test2Interceptor,
       multi: true
     },
-    { provide: APP_INITIALIZER, useFactory: initializeApp1, multi: true}
+    { provide: APP_INITIALIZER, useFactory: initializeApp1, deps:[TestInitilizerService] , multi: true}
   ],
   bootstrap: [AppComponent]
 })

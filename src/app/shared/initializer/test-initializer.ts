@@ -1,3 +1,7 @@
-export function initializeApp1() {
-  return () => {console.log(111)};
+import {TestInitilizerService} from './test-initilizer.service';
+
+export function initializeApp1(testInitService: TestInitilizerService) {
+  return () => {
+    return testInitService.Init();
+  };
 }
