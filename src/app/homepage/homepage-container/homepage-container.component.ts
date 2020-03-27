@@ -8,6 +8,11 @@ import {TestServiceService} from '../../shared/api/test-service.service';
 })
 export class HomepageContainerComponent implements OnInit, OnDestroy {
 
+  public array = [
+    {name: 'John'},
+    {name: 'Mark'},
+    {name: 'Steven'},
+  ]
   private sub;
   constructor(private appRef: ApplicationRef, private testService: TestServiceService) { }
 

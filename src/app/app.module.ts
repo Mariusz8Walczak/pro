@@ -9,6 +9,7 @@ import {Test2Interceptor} from './shared/interceptors/test2-interceptor';
 import {initializeApp1} from './shared/initializer/test-initializer';
 import {TestInitilizerService} from './shared/initializer/test-initilizer.service';
 import {Lesson2Module} from './lesson2/lesson2.module';
+import { HeroComponentComponent } from './hero-component/hero-component.component';
 
 @NgModule({
   declarations: [
@@ -22,17 +23,22 @@ import {Lesson2Module} from './lesson2/lesson2.module';
   ],
   providers: [
     TestInitilizerService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TestInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: Test2Interceptor,
-      multi: true
-    },
-    { provide: APP_INITIALIZER, useFactory: initializeApp1, deps:[TestInitilizerService] , multi: true}
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TestInterceptor,
+    //   multi: true
+    // },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: Test2Interceptor,
+    //   multi: true
+    // },
+    // { provide: APP_INITIALIZER,
+    //   useFactory: initializeApp1,
+    //   deps: [TestInitilizerService],
+    //   multi: true}
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })
