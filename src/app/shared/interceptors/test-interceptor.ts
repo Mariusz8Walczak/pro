@@ -2,12 +2,11 @@ import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/com
 import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
 import {catchError} from 'rxjs/operators';
-import {ToastrService} from 'ngx-toastr';
 
 @Injectable()
 export class TestInterceptor implements HttpInterceptor {
 
-  constructor(private toastr: ToastrService){}
+  constructor(){}
 
   intercept(
     request: HttpRequest<any>, next: HttpHandler
@@ -15,15 +14,24 @@ export class TestInterceptor implements HttpInterceptor {
     console.log(request.url);
     return next.handle(request).pipe(
       catchError(error => {
-        if (error.status === 422) {
-          alert('brak strony');
-          return throwError(error);
-        } else {
-          console.log(error);
-          console.log(error.status);
+        if (error.status === 400) {
+          console.log('zly request');
         }
-        return throwError(error);
+
+        if(error.status === 301 && error.error && error.error.status === 0){
+          console.log('przekieruj tutaj: ' + error.error.url);
+        }
+          console.warn(error);
+          console.log(error.status);
+
+          if(error.error instanceof ProgressEvent ) {
+            alert('przekroczono czas oczekiwania na server, sprobuj później');
+          } else if(error.error) {
+            alert('mamy blad: ' + error.error);
+          }
+
+          return throwError(error);
       }
-    ))
+    ));
   }
 }

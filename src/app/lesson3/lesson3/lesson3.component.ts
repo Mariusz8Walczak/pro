@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {TestApiService} from '../../shared/api/test-api.service';
-import {DocumentService} from '../../shared/api/socket.service';
 
 @Component({
   selector: 'app-lesson3',
@@ -12,11 +11,11 @@ export class Lesson3Component implements OnInit {
   constructor(private testApiService: TestApiService) { }
 
   ngOnInit() {
-    this.testApiService.getBadRequest().subscribe();
+    // this.testApiService.getBadRequest().subscribe();
     this.testApiService.getError().subscribe();
-    this.testApiService.getGood().subscribe();
-    this.testApiService.getRedirect().subscribe();
-    this.testApiService.getUnavailible().subscribe();
+    // this.testApiService.getGood().subscribe(data => console.log(data));
+    // this.testApiService.getRedirect().subscribe();
+    // this.testApiService.getUnavailible().subscribe();
   }
 
 }
