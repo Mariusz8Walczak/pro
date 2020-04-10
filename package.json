@@ -13,7 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~8.2.14",
+    "@angular/animations": "^8.2.14",
     "@angular/cdk": "~8.2.3",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
@@ -29,7 +29,10 @@
     "@ngrx/store": "^8.6.0",
     "bootstrap-css-only": "^4.4.1",
     "hammerjs": "^2.0.8",
+    "ngx-socket-io": "^3.0.1",
+    "ngx-toastr": "^12.0.1",
     "rxjs": "~6.4.0",
+    "toastr": "^2.1.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
