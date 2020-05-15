@@ -21,10 +21,8 @@ export class TestInterceptor implements HttpInterceptor {
         if(error.status === 301 && error.error && error.error.status === 0){
           console.log('przekieruj tutaj: ' + error.error.url);
         }
-          console.warn(error);
-          console.log(error.status);
 
-          if(error.error instanceof ProgressEvent ) {
+          if (error.error instanceof ProgressEvent ) {
             alert('przekroczono czas oczekiwania na server, sprobuj później');
           } else if(error.error) {
             alert('mamy blad: ' + error.error);
